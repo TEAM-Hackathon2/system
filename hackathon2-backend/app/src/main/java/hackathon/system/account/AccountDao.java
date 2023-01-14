@@ -1,5 +1,6 @@
 package hackathon.system.account;
 
+import java.util.Arrays;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -20,6 +21,11 @@ public class AccountDao {
   public boolean checkAdmin(String password) {
     return this.admin.getPassword().equals(password);
   }
+
+  public Account[] getAllAccount() {
+    return Arrays.copyOf(this.accounts, this.count);
+  }
+
 
   public String createAccount(String id, String password) {
 

@@ -1,26 +1,26 @@
-package hackathon.system.vo;
+package hackathon.system.member;
 
 public class Attendance {
-  private int inTime;
-  private int outTime;
+  private double inTime;
+  private double outTime;
   private boolean absent;
   private int absentType;
   private String absentReason;
 
 
-  public int getInTime() {
+  public double getInTime() {
     return inTime;
   }
 
-  public void setInTime(int inTime) {
+  public void setInTime(double inTime) {
     this.inTime = inTime;
   }
 
-  public int getOutTime() {
+  public double getOutTime() {
     return outTime;
   }
 
-  public void setOutTime(int outTime) {
+  public void setOutTime(double outTime) {
     this.outTime = outTime;
   }
 

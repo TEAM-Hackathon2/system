@@ -7,10 +7,14 @@ public class Account {
   private String password;
   private String createDate;
 
+  public Account() {
+    this.createDate = new Date(System.currentTimeMillis()).toString();
+  }
+
   public Account(String id, String password) {
+    this();
     this.id = id;
     this.password = password;
-    this.createDate = new Date(System.currentTimeMillis()).toString();
   }
 
   public String getId() {
