@@ -1,8 +1,8 @@
-document.querySelector("#login-btn").onclick = function(e) {
+document.querySelector("#register-btn").onclick = function(e) {
     var id = document.querySelector("#username").value;
     var password = document.querySelector("#password").value;
-  
-    fetch('http://localhost:8080/login', {
+    
+    fetch('http://localhost:8080/registAccount', {
       method: 'POST',
       headers: {
         'Content-Type': 'Application/json'
@@ -13,15 +13,11 @@ document.querySelector("#login-btn").onclick = function(e) {
     })
     .then((response) => response.json())
     .then((obj) => {
-    if (obj.status == "admin") {      
-      location.href = "admin.html";
-    } else {
-      if (obj.status == "success") {
-      location.href = "indevidual.html";
-      } else {
-        alert(obj.message);
-      }
-    }
+    if (obj.status == "failure") {        
+    	alert(obj.message);
+      return;
+    } 
+		alert(obj.message);
   })
     .catch((err) => {
       console.log(err);});

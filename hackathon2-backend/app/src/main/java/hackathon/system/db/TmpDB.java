@@ -5,7 +5,7 @@ import hackathon.system.member.Attendances;
 import hackathon.system.member.Member;
 
 public class TmpDB {
-  private Member[] tmpMembers = new Member[20];
+  private Member[] tmpMembers = new Member[25];
   private String[] names = {
       "윤종광","윤솔","조준호","조승현","신지윤",
       "김현우","전태산","조희성","전서린","이건형",
@@ -18,11 +18,21 @@ public class TmpDB {
     Long defaultTime = System.currentTimeMillis() - 1000l * 3600 * 24 * 13;
 
     for (int i = 0; i < 13; i++) {
-      attendaces.checkIn(8.0 + Math.round((Math.random()*4 * 10))/10.0, new Date(defaultTime + (1000l * 3600 * 24 * i)));
-      attendaces.checkOut(18.0 + Math.round((Math.random()*2 * 10))/10.0, new Date(defaultTime + (1000l * 3600 * 24 * i)));
+      Date tmp = new Date(defaultTime + (1000l * 3600 * 24 * i));
+      switch ((int)(Math.random()*8)) {
+        case 0:
+          attendaces.checkAbsent("none",tmp);
+          break;
+        case 1:
+          attendaces.checkAbsent("sick",tmp);
+          break;
+        default:
+          attendaces.checkIn(8.0 + Math.round((Math.random()*4 * 10))/10.0, tmp);
+          attendaces.checkOut(18.0 + Math.round((Math.random()*2 * 10))/10.0, tmp);
+      }
     }
 
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 25; i++) {
       this.tmpMembers[i] = new Member();
       this.tmpMembers[i].setAttendance(attendaces);
       this.tmpMembers[i].setNo(i + 1);

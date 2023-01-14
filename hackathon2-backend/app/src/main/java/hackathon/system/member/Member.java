@@ -1,6 +1,6 @@
 package hackathon.system.member;
 
-public class Member {
+public class Member {        //계정이랑 통합해야할수도
   private int no;
   private String name;
   private String id;

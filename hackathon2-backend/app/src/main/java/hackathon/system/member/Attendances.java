@@ -45,6 +45,29 @@ public class Attendances {
     this.Attendances.get(date).setOutTime(time);
   }
 
+  public void checkAbsent(String why, Date... dates) {
+    Attendance at = new Attendance();
+    String date;
+
+    at.setAbsent(true);
+
+    if (why.equals("none")) {
+      at.setAbsentType(0);
+      at.setAbsentReason(why);
+    } else {
+      at.setAbsentType(1);
+      at.setAbsentReason(why);
+    }
+
+
+    if (dates.length == 0) {
+      date = new Date(System.currentTimeMillis()).toString();
+    } else {
+      date = dates[0].toString();
+    }
+    Attendances.put(date, at);
+  }
+
   public Map<String, Attendance> getAttendances() {
     return Attendances;
   }
