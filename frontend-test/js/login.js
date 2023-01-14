@@ -1,11 +1,11 @@
 
 
-document.querySelector("#hkt-login").onclick = function(e) {
+document.querySelector("#login-btn").onclick = function(e) {
   var id = document.querySelector("#inputEmail").value;
   var password = document.querySelector("#inputPassword").value;
 
 
-  fetch(`http://localhost:8080/login`, {
+  fetch(`http://localhost:8080/login2`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/x-www-form-urlencoded'
