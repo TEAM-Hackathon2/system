@@ -11757,7 +11757,7 @@ font-weight:bold;
   font-weight:bold;
   }
   .barchart-div{
-    width:850px;
+    width:700px;
     height:500px;
     padding-top:70px;
     margin:auto;
@@ -11765,6 +11765,7 @@ font-weight:bold;
   
   .circle-div{
     width:300px;
+    height:500px;
     margin:auto;
   }
   #row{
