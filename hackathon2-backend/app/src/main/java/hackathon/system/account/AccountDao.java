@@ -14,8 +14,18 @@ public class AccountDao {
   private int count;
 
   public AccountDao() {
-    this.count = 1;
-    this.accounts[0] = new Account("fs","1"); //더미데이터
+
+    String[] names = {
+        "윤종광","윤솔","조준호","조승현","신지윤",
+        "김현우","전태산","조희성","전서린","이건형",
+        "박경한","이예찬","김종현","오병현","차민주",
+        "이명준","김다예레","심우준","이준영","한대호",
+        "서영훈","서길원","양창덕","안진수","이성민"};
+
+    for (String name : names) {
+      this.createAccount("id" + name, "1");
+    }
+
   }
 
   public boolean checkAdmin(String password) {

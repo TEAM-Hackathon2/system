@@ -5,45 +5,39 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import hackathon.system.account.AccountDao;
-import hackathon.system.db.TmpDB;
 import hackathon.system.ip.IPChecker;
 import hackathon.system.member.Member;
+import hackathon.system.member.MemberDao;
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 public class DataController {
-  AccountDao accountDao;
+  MemberDao memberDao;
   @Autowired HttpServletRequest request;
   @Autowired IPChecker ipChecker;
-  TmpDB t = new TmpDB();
 
-  public DataController(AccountDao accountDao) {
-    this.accountDao = accountDao;
+  public DataController(MemberDao memberDao) {
+    this.memberDao = memberDao;
   }
 
   @GetMapping("/admin")
   public Object getAll() {
 
-
-    Member[] m = t.getTmpData();
-    Member[] o = t.getOneDayData();
-
     Map<String, Object> contentMap = new HashMap<>();
 
     contentMap.put("status", "success");
-    contentMap.put("data", m);
-    contentMap.put("onedaydata", o);
+    contentMap.put("data", memberDao.findAll());
+    contentMap.put("onedaydata", memberDao.getOneDayData());
     return contentMap;
   }
 
   @GetMapping("/indiv")
   public Object getIndiv() {
-
     Map<String, Object> contentMap = new HashMap<>();
 
+    Member m = memberDao.findById(this.ipChecker.takeOutIp(this.request.getRemoteAddr()));
     contentMap.put("status", "success");
-    contentMap.put("data", this.ipChecker.takeOutIp(this.request.getRemoteAddr()));
+    contentMap.put("data", m);
     return contentMap;
   }
 }

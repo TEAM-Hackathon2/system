@@ -11772,3 +11772,203 @@ font-weight:bold;
     position:relative;
     top:50px;
   }
+  
+  .qrbodys{
+        
+    box-sizing: border-box;
+    width: 650px; 
+    position: relative; 
+    top:10px;
+    left:25%;
+    border: 1px solid rgb(218, 214, 214);
+    border-radius: 30px 30px 30px 30px/30px 30px 30px 30px;     
+}
+.qr-a{
+  position: relative;
+  text-align: center;
+  height:40px;   
+  top:10px; 
+}
+.naesangtaes{
+    border: 1px solid rgb(218, 214, 214);
+    display: inline-block;
+    box-sizing: border-box;        
+    width: 650px;
+    height:150px;
+    margin: 0;
+
+    margin-bottom: 50px;
+    
+}
+.sangtaes {
+    list-style: none;
+    /* border: 1px solid black; */
+    display: inline-block;
+    width: 280px;
+    height: 50px;
+    box-sizing: border-box;
+    position: relative;
+    top:25px;
+    left:50px;
+    
+
+}
+.sangtaes-a{
+    border: 0.1px solid rgb(218, 214, 214);
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 45px;
+    margin: 0 auto;
+    vertical-align :middle
+    
+    
+}.sangtaes-a a{
+ 
+  position: relative;
+  top:10px;
+  right:8px;
+  font-weight: bold; 
+
+  
+}
+.sangtaes-b {
+    border: 1px solid rgb(218, 214, 214);
+    display: inline-block;
+    width: 115px;
+    height: 45px;
+    margin: 0 auto;
+    vertical-align :middle;    
+    position:relative;
+}  
+.sangtaes-b a{
+  position: relative;
+  left:18px;
+  top:8px;
+}
+.chulgyulandjindos{
+    /* border: 1px solid black; */
+    width: 650px;
+    display: inline-block;
+    box-sizing: border-box; 
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.hyunhwangs{
+    border: 2px solid rgb(218, 214, 214);
+    display: inline-block;
+    box-sizing: border-box; 
+    width: 650px;
+    height:200px;
+    text-align: center;
+    position: relative;
+    
+}
+
+.hyunhwangcounts{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    padding : 30px;
+    position:relative;
+    right:15px;
+    margin:15px;
+    top:20px;
+    background-color:#58668B;
+}
+.hyunhwangwords{
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+    font-weight: bold;
+    position:relative;
+    width: 70px;
+    margin:20.5px;
+}
+.conglyuls{
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+    display: inline-block;
+    width: 650px;
+    /* background-color: #dee2e6;    */
+    position: relative;
+ 
+}
+
+
+.conglyulhyunhwangs{
+    list-style: none;
+    /* border: 1px solid black; */
+    margin: 0 auto; 
+    color: #6c757d;
+    height: 230px; 
+         
+    /* text-align: center; */
+}
+.gakpersent {
+    list-style: none;
+    border-top: 3px solid rgb(218, 214, 214);
+    margin: 0 auto;
+    height: 50px;
+    
+}
+.lyultexts{
+    list-style: none;
+    /* border: 1px solid black;         */
+    margin :0 auto;
+    
+   
+}
+.lyultexts .lyultexts-a{
+    list-style: none;
+    border: 1px #f8f9fa;
+    display: inline-block;
+    vertical-align :middle;
+    box-sizing: border-box;
+    text-align: left;
+    border-radius: 30px 30px 30px 30px;
+    background-color: #fff;
+    padding-right: 30px;
+
+}
+.persents{
+    list-style: none;
+    /* border: 1px solid black; */
+    display: inline-block;
+    vertical-align :middle;
+    box-sizing: border-box;
+  
+}
+.skill {
+    text-align: right;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.wrap{width: 1000px; margin:auto;}
+
+.percentgraphs-1{
+    width: 10%;
+    background-color: #eefff5;
+    border-radius: 0px 30px 30px 30px/30px 30px 30px 0px;
+}
+.percentgraphs-2{
+    width: 10%;
+    background-color: #d2ebff;
+    border-radius: 0px 30px 30px 30px/30px 30px 30px 0px;
+}
+
+.percentgraphs-3{
+    width: 10%;
+    background-color: #ffeeec;
+    border-radius: 0px 30px 30px 30px/30px 30px 30px 0px;
+}
+
+
+.nav > button {
+  border: none;
+  background-color: #212529;
+  color: rgba(255, 255, 255, 0.5);
+}

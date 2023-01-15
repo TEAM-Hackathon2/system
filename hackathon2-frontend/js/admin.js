@@ -3,9 +3,8 @@ fetch('http://localhost:8080/admin')
   .then((response) => response.json())
   .then((obj) => {
     if (obj.status === "success") {
-      let resultData = changeData(obj.data);
-      let onedayData = obj.onedayData;
-      console.log(onedayData);
+      let resultData = changeData(obj.onedaydata);
+      console.log(obj.data);
       document.querySelector("#attendance").innerHTML = resultData.common;
       document.querySelector("#tardy").innerHTML = resultData.late;
       document.querySelector("#sick-absent").innerHTML = resultData.sick;
@@ -32,15 +31,13 @@ function changeData(array) {
   let sick = 0;
   let absent = 0;
   let already = 0;
-  console.log(array);
   let weekData = [[0,0],[0,0],[0,0],[0,0],[0,0]];
   var count = 0;
   for (let a of array) {
     for (let b in a.attendance) {
       for (let c in a.attendance[b]) {
         var d = a.attendance[b][c];
-
-        if (!d.absent) {
+        if (d.absent !== null && d.absent !== undefined && !d.absent) {
           if (d.inTime >= 9.5) {
             late++;
           } else if (d.outTime <= 18) {
@@ -61,9 +58,7 @@ function changeData(array) {
         if (count === 5) {
           count = 0;
         }
-      }
-
-      
+      }      
     }      
   }
   return {
@@ -103,9 +98,9 @@ function drawCircleChart(attendance, absent, late, already, sick) {
 function drawMixChart(weekendData) {
   const ctx1 = document.getElementById('myChart1');
   const mydata = [weekendData[0][1],weekendData[1][1],weekendData[2][1],
-  weekendData[3][1],weekendData[4][1],0,0];
+  weekendData[3][1],weekendData[4][1]];
   const mydataHalf = [weekendData[0][0],weekendData[1][0],weekendData[2][0],
-  weekendData[3][0],weekendData[4][0],0,0];;
+  weekendData[3][0],weekendData[4][0]];;
 
   mixedChart = {
   type: 'bar',

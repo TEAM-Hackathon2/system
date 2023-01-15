@@ -18,7 +18,7 @@ public class IPChecker {
 
   public String takeOutIp(String ip) {
     String result = this.ipRecorder.get(ip);
-    this.ipRecorder.remove(ip);
+    //this.ipRecorder.remove(ip);
     return result;
   }
 }

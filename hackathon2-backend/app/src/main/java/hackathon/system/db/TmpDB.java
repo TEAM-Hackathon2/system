@@ -5,6 +5,7 @@ import hackathon.system.member.Attendances;
 import hackathon.system.member.Member;
 
 public class TmpDB {
+
   private Member[] tmpMembers = new Member[25];
   private String[] names = {
       "윤종광","윤솔","조준호","조승현","신지윤",
@@ -24,7 +25,7 @@ public class TmpDB {
       "여","여","남","여","여",
       "남","남","여","남","남",
       "남","남","남","남","여"};
-  private String[] addresss = {
+  private String[] addresses = {
       "서울시 강남구 비트캠프","서울시 강남구 비트캠프","서울시 강남구 비트캠프","서울시 강남구 비트캠프","서울시 강남구 비트캠프",
       "서울시 강남구 비트캠프","서울시 강남구 비트캠프","서울시 강남구 비트캠프","서울시 강남구 비트캠프","서울시 강남구 비트캠프",
       "서울시 강남구 비트캠프","서울시 강남구 비트캠프","서울시 강남구 비트캠프","서울시 강남구 비트캠프","서울시 강남구 비트캠프",
@@ -38,16 +39,15 @@ public class TmpDB {
       "010-1234-5678","010-1234-5678","010-1234-5678","010-1234-5678","010-1234-5678"};
 
   public TmpDB() {
-    this.tmpMembers = makeTmpMembers();
+    makeTmpMembers();
   }
 
   private Member[] makeTmpMembers() {
 
-    Long defaultTime = System.currentTimeMillis() - 1000l * 3600 * 24 * 13;
+    Long defaultTime = System.currentTimeMillis() - 1000l * 3600 * 24 * 14;
     for (int i = 0; i < 25; i++) {
-      this.tmpMembers[i] = new Member();
       Attendances attendaces = new Attendances();
-      for (int j = 0; j < 13; j++) {
+      for (int j = 0; j < 14; j++) {
 
         Date tmp = new Date(defaultTime + (1000l * 3600 * 24 * j));
         switch ((int)(Math.random()*10)) {
@@ -62,34 +62,13 @@ public class TmpDB {
             attendaces.checkOut(18.0 + Math.round((Math.random()*2 * 10))/10.0, tmp);
         }
       }
-
-
-      this.tmpMembers[i].setAttendance(attendaces);
-      this.tmpMembers[i].setNo(i + 1);
-      this.tmpMembers[i].setId("id" + i);
-      this.tmpMembers[i].setName(names[i]);
-      this.tmpMembers[i].setAge(ages[i]);
-      this.tmpMembers[i].setGender(genders[i]);
-      this.tmpMembers[i].setAddress(addresss[i]);
-      this.tmpMembers[i].setTel(tels[i]);
+      this.tmpMembers[i] = new Member(i+1,names[i], "id"+ names[i],
+          ages[i], genders[i],addresses[i],tels[i],attendaces);
     }
-
     return tmpMembers;
   }
 
   public Member[] getTmpData() {
     return this.tmpMembers;
-  }
-
-  public Member[] getOneDayData() {
-    Member[] datas = new Member[25];
-    int count = 0;
-    for (Member m : this.tmpMembers) {
-      datas[count] = m;
-      datas[count++].getAttendance().setAttendances(
-          m.getAttendance().getOneDayAttendances(
-              new Date(System.currentTimeMillis() - 1000l * 3600 * 24).toString()));
-    }
-    return datas;
   }
 }

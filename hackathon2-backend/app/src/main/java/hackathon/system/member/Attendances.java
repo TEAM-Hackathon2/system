@@ -17,7 +17,7 @@ public class Attendances {
     this.startDate = startDate;
   }
 
-  public void checkIn(double time, Date... dates) {
+  public boolean checkIn(double time, Date... dates) {
     Attendance at = new Attendance();
     String date;
 
@@ -27,22 +27,29 @@ public class Attendances {
     } else {
       date = dates[0].toString();
     }
+
+    if (Attendances.containsKey(date)
+        && Attendances.get(date).getInTime() != 0) {
+      return false;
+    }
+
     Attendances.put(date, at);
+    return true;
   }
 
-  public void checkOut(double time, Date... dates) {
+  public boolean checkOut(double time, Date... dates) {
     String date;
     if (dates.length == 0) {
       date = new Date(System.currentTimeMillis()).toString();
     } else {
       date = dates[0].toString();
     }
-
-    if (!this.Attendances.containsKey(date)) {
-      //애매해
+    if (this.Attendances.get(date).getOutTime() != 0) {
+      return false;
     }
 
     this.Attendances.get(date).setOutTime(time);
+    return true;
   }
 
   public void checkAbsent(String why, Date... dates) {

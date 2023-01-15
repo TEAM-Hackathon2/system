@@ -22,7 +22,7 @@ public class AccountController {
     this.accountDao = accountDao;
   }
 
-  @PostMapping("/login") //이부분은 계정컨트롤러로 옮겨야할듯
+  @PostMapping("/login")
   public Object getDatas(@RequestBody Account a) {
 
     Map<String, Object> contentMap = new HashMap<>();

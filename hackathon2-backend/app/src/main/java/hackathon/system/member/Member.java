@@ -1,11 +1,12 @@
 package hackathon.system.member;
 
+import java.sql.Date;
+
 public class Member {        //계정이랑 통합해야할수도
   private Attendances attendance;
   private int no;
   private String name;
   private String id;
-  private String password;
   private String createDate;
   private String age;
   private String gender;
@@ -13,7 +14,7 @@ public class Member {        //계정이랑 통합해야할수도
   private String tel;
 
   public Member() {
-    //attendance = new Attendances();
+    this.createDate = new Date(System.currentTimeMillis()).toString();
   }
 
   public Member(String createDate) {
@@ -21,13 +22,39 @@ public class Member {        //계정이랑 통합해야할수도
     this.createDate = createDate;
   }
 
-  public Member(String createDate, int no, String name, String id, String password) {
+  public Member(String createDate, int no, String name, String id) {
     //attendance = new Attendances(createDate);
     this.no = no;
     this.name = name;
     this.id = id;
-    this.password = password;
   }
+
+  public Member(int no, String name, String id, String age, String gender, String address, String tel) {
+    this.no = no;
+    this.name = name;
+    this.id = id;
+    this.age = age;
+    this.gender = gender;
+    this.address = address;
+    this.tel = tel;
+
+    this.createDate = new Date(System.currentTimeMillis()).toString();
+    this.attendance = new Attendances(this.createDate);
+  }
+
+  public Member(int no, String name, String id, String age,
+      String gender, String address, String tel, Attendances at) {
+    this.no = no;
+    this.name = name;
+    this.id = id;
+    this.age = age;
+    this.gender = gender;
+    this.address = address;
+    this.tel = tel;
+    this.createDate = new Date(System.currentTimeMillis()).toString();
+    this.attendance = at;
+  }
+
 
   public void setAttendance(Attendances attendance) {
     this.attendance = attendance;
@@ -36,7 +63,6 @@ public class Member {        //계정이랑 통합해야할수도
   public Attendances getAttendance() {
     return this.attendance;
   }
-
 
   public int getNo() {
     return no;
@@ -55,12 +81,6 @@ public class Member {        //계정이랑 통합해야할수도
   }
   public void setId(String id) {
     this.id = id;
-  }
-  public String getPassword() {
-    return password;
-  }
-  public void setPassword(String password) {
-    this.password = password;
   }
   public String getCreateDate() {
     return createDate;
