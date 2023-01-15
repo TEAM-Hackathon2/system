@@ -7,11 +7,19 @@ fetch('http://localhost:8080/admin')
     let html = '';
     for (let m of obj.onedaydata) {
       let attendance = "";
-      for (let at in m.attendance.attendances) {
-        if(m.attendance.attendances[at].absent) {
+      for (let at in m.attendance.attendances) {        
+        if (m.attendance.attendances == null) {
           attendance = "결석";
-        } else {
-          attendance = "출석";
+        } else {          
+          if (m.attendance.attendances[at] == null) {
+            attendance = "결석";
+          } else {
+            if (m.attendance.attendances[at].absent) {
+              attendance = "결석";
+            } else {
+              attendance = "출석";
+            }
+          }          
         }
       }      
       html += `<tr>

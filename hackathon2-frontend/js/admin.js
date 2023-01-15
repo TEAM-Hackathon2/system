@@ -4,7 +4,7 @@ fetch('http://localhost:8080/admin')
   .then((obj) => {
     if (obj.status === "success") {
       let resultData = changeData(obj.onedaydata);
-      console.log(obj.data);
+      //console.log(obj.plz);
       document.querySelector("#attendance").innerHTML = resultData.common;
       document.querySelector("#tardy").innerHTML = resultData.late;
       document.querySelector("#sick-absent").innerHTML = resultData.sick;
@@ -34,33 +34,33 @@ function changeData(array) {
   let weekData = [[0,0],[0,0],[0,0],[0,0],[0,0]];
   var count = 0;
   for (let a of array) {
-    for (let b in a.attendance) {
-      for (let c in a.attendance[b]) {
-        var d = a.attendance[b][c];
-        if (d.absent !== null && d.absent !== undefined && !d.absent) {
-          if (d.inTime >= 9.5) {
+    for (let b in a.attendance.attendances) {      
+      let c = a.attendance.attendances[b];
+        if (c == null) {
+          absent++;
+        } else if (c.absent) {
+          if (c.absentType === 0) {
+            absent++;
+          } else if ((c.absentType === 1)) {
+            sick++;
+          }
+          weekData[count][1]++;
+        } else {
+          if (c.inTime >= 9.5) {
             late++;
-          } else if (d.outTime <= 18) {
+          } else if (c.outTime <= 18) {
             already++;
           } else {
             common++;
           }     
           weekData[count][0]++;
-        } else {
-          if (d.absentType === 0) {
-            absent++;
-          } else if ((d.absentType === 1)) {
-            sick++;
-          }
-          weekData[count][1]++;
         }
         count++;
         if (count === 5) {
           count = 0;
         }
-      }      
-    }      
-  }
+        }
+      }          
   return {
     "common" : common,
     "late" : late,

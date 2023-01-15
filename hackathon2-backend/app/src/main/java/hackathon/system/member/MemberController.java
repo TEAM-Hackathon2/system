@@ -22,6 +22,15 @@ public class MemberController {
 
     Map<String, Object> contentMap = new HashMap<>();
 
+    //    Member n = new Member();
+    //    n.setAddress(m.getAddress());
+    //    n.setAge(m.getAge());
+    //    n.setCreateDate(new Date(System.currentTimeMillis()).toString());
+    //    n.setGender(m.getGender());
+    //    n.setId(m.getId());
+    //    n.setName(m.getName());
+    //    n.setTel(m.getTel());
+
     memberDao.insert(m);
 
     contentMap.put("status", "success");

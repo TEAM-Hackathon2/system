@@ -7,6 +7,10 @@ public class Attendance {
   private int absentType;
   private String absentReason;
 
+  Attendance() {
+    this.absent = true;
+  }
+
 
   public double getInTime() {
     return inTime;
@@ -14,6 +18,7 @@ public class Attendance {
 
   public void setInTime(double inTime) {
     this.inTime = inTime;
+    this.absent = false;
   }
 
   public double getOutTime() {

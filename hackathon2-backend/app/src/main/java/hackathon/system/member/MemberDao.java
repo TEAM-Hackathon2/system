@@ -34,6 +34,9 @@ public class MemberDao {
   }
 
   public void insert(Member member) {
+    if (member.getAttendance().getAttendances() == null) {
+      System.out.println("널인데?");
+    }
     member.setNo(++no);
     this.members[this.count++] = member;
   }

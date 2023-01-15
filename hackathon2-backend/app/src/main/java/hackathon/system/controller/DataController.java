@@ -25,8 +25,9 @@ public class DataController {
 
     Map<String, Object> contentMap = new HashMap<>();
 
+
     contentMap.put("status", "success");
-    contentMap.put("data", memberDao.findAll());
+    contentMap.put("plz", memberDao.findAll());
     contentMap.put("onedaydata", memberDao.getOneDayData());
     return contentMap;
   }

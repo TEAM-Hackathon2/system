@@ -15,6 +15,7 @@ public class Member {        //계정이랑 통합해야할수도
 
   public Member() {
     this.createDate = new Date(System.currentTimeMillis()).toString();
+    this.attendance = new Attendances();
   }
 
   public Member(String createDate) {
@@ -39,7 +40,7 @@ public class Member {        //계정이랑 통합해야할수도
     this.tel = tel;
 
     this.createDate = new Date(System.currentTimeMillis()).toString();
-    this.attendance = new Attendances(this.createDate);
+    this.attendance = new Attendances();
   }
 
   public Member(int no, String name, String id, String age,

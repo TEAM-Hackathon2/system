@@ -5,16 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Attendances {
-  private Map<String, Attendance> Attendances = new HashMap<>();
-  private String startDate;
-
+  private Map<String, Attendance> attendances;
 
   public Attendances() {
-    this.startDate = new Date(System.currentTimeMillis()).toString();
-  }
-
-  public Attendances(String startDate) {
-    this.startDate = startDate;
+    this.attendances = new HashMap<>();
+    String date = new Date(System.currentTimeMillis()).toString();
+    attendances.put(date, new Attendance());
   }
 
   public boolean checkIn(double time, Date... dates) {
@@ -28,12 +24,12 @@ public class Attendances {
       date = dates[0].toString();
     }
 
-    if (Attendances.containsKey(date)
-        && Attendances.get(date).getInTime() != 0) {
+    if (attendances.containsKey(date)
+        && attendances.get(date).getInTime() != 0) {
       return false;
     }
 
-    Attendances.put(date, at);
+    attendances.put(date, at);
     return true;
   }
 
@@ -44,11 +40,11 @@ public class Attendances {
     } else {
       date = dates[0].toString();
     }
-    if (this.Attendances.get(date).getOutTime() != 0) {
+    if (this.attendances.get(date).getOutTime() != 0) {
       return false;
     }
 
-    this.Attendances.get(date).setOutTime(time);
+    this.attendances.get(date).setOutTime(time);
     return true;
   }
 
@@ -72,20 +68,20 @@ public class Attendances {
     } else {
       date = dates[0].toString();
     }
-    this.Attendances.put(date, at);
+    this.attendances.put(date, at);
   }
 
   public Map<String, Attendance> getAttendances() {
-    return Attendances;
+    return attendances;
   }
 
   public void setAttendances(Map<String, Attendance> attendances) {
-    this.Attendances = attendances;
+    this.attendances = attendances;
   }
 
   public Map<String, Attendance> getOneDayAttendances(String date) {
     Map<String, Attendance> tmp = new HashMap<>();
-    tmp.put(date,this.Attendances.get(date));
+    tmp.put(date,this.attendances.get(date));
     return tmp;
   }
 }
