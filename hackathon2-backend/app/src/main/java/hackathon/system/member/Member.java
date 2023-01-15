@@ -1,12 +1,16 @@
 package hackathon.system.member;
 
 public class Member {        //계정이랑 통합해야할수도
+  private Attendances attendance;
   private int no;
   private String name;
   private String id;
   private String password;
   private String createDate;
-  private Attendances attendance;
+  private String age;
+  private String gender;
+  private String address;
+  private String tel;
 
   public Member() {
     //attendance = new Attendances();
@@ -63,5 +67,28 @@ public class Member {        //계정이랑 통합해야할수도
   }
   public void setCreateDate(String createDate) {
     this.createDate = createDate;
+  }  public String getAge() {
+    return age;
+  }
+  public void setAge(String age) {
+    this.age = age;
+  }
+  public String getGender() {
+    return gender;
+  }
+  public void setGender(String gender) {
+    this.gender = gender;
+  }
+  public String getAddress() {
+    return address;
+  }
+  public void setAddress(String address) {
+    this.address = address;
+  }
+  public String getTel() {
+    return tel;
+  }
+  public void setTel(String tel) {
+    this.tel = tel;
   }
 }

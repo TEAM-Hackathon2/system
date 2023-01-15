@@ -16,6 +16,7 @@ public class DataController {
   AccountDao accountDao;
   @Autowired HttpServletRequest request;
   @Autowired IPChecker ipChecker;
+  TmpDB t = new TmpDB();
 
   public DataController(AccountDao accountDao) {
     this.accountDao = accountDao;
@@ -24,7 +25,7 @@ public class DataController {
   @GetMapping("/admin")
   public Object getAll() {
 
-    TmpDB t = new TmpDB();
+
     Member[] m = t.getTmpData();
     Member[] o = t.getOneDayData();
 
