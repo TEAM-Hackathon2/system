@@ -13,27 +13,34 @@ public class TmpDB {
       "이명준","김다예레","심우준","이준영","한대호",
       "서영훈","서길원","양창덕","안진수","이성민"};
 
-  public Member[] makeTmpMembers() {
-    Attendances attendaces = new Attendances();
+
+  public TmpDB() {
+    this.tmpMembers = makeTmpMembers();
+  }
+
+  private Member[] makeTmpMembers() {
+
     Long defaultTime = System.currentTimeMillis() - 1000l * 3600 * 24 * 13;
-
-    for (int i = 0; i < 13; i++) {
-      Date tmp = new Date(defaultTime + (1000l * 3600 * 24 * i));
-      switch ((int)(Math.random()*8)) {
-        case 0:
-          attendaces.checkAbsent("none",tmp);
-          break;
-        case 1:
-          attendaces.checkAbsent("sick",tmp);
-          break;
-        default:
-          attendaces.checkIn(8.0 + Math.round((Math.random()*4 * 10))/10.0, tmp);
-          attendaces.checkOut(18.0 + Math.round((Math.random()*2 * 10))/10.0, tmp);
-      }
-    }
-
     for (int i = 0; i < 25; i++) {
       this.tmpMembers[i] = new Member();
+      Attendances attendaces = new Attendances();
+      for (int j = 0; j < 13; j++) {
+
+        Date tmp = new Date(defaultTime + (1000l * 3600 * 24 * j));
+        switch ((int)(Math.random()*10)) {
+          case 0:
+            attendaces.checkAbsent("none",tmp);
+            break;
+          case 1:
+            attendaces.checkAbsent("sick",tmp);
+            break;
+          default:
+            attendaces.checkIn(8.0 + Math.round((Math.random()*4 * 10))/10.0, tmp);
+            attendaces.checkOut(18.0 + Math.round((Math.random()*2 * 10))/10.0, tmp);
+        }
+      }
+
+
       this.tmpMembers[i].setAttendance(attendaces);
       this.tmpMembers[i].setNo(i + 1);
       this.tmpMembers[i].setId("id" + i);
@@ -41,5 +48,21 @@ public class TmpDB {
     }
 
     return tmpMembers;
+  }
+
+  public Member[] getTmpData() {
+    return this.tmpMembers;
+  }
+
+  public Member[] getOneDayData() {
+    Member[] datas = new Member[25];
+    int count = 0;
+    for (Member m : this.tmpMembers) {
+      datas[count] = m;
+      datas[count++].getAttendance().setAttendances(
+          m.getAttendance().getOneDayAttendances(
+              new Date(System.currentTimeMillis() - 1000l * 3600 * 24).toString()));
+    }
+    return datas;
   }
 }

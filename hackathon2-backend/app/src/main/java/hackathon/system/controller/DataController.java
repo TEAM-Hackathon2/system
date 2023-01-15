@@ -25,12 +25,14 @@ public class DataController {
   public Object getAll() {
 
     TmpDB t = new TmpDB();
-    Member[] m = t.makeTmpMembers();
+    Member[] m = t.getTmpData();
+    Member[] o = t.getOneDayData();
 
     Map<String, Object> contentMap = new HashMap<>();
 
     contentMap.put("status", "success");
     contentMap.put("data", m);
+    contentMap.put("onedaydata", o);
     return contentMap;
   }
 

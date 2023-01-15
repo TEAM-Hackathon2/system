@@ -4,7 +4,8 @@ fetch('http://localhost:8080/admin')
   .then((obj) => {
     if (obj.status === "success") {
       let resultData = changeData(obj.data);
-
+      let onedayData = obj.onedayData;
+      console.log(onedayData);
       document.querySelector("#attendance").innerHTML = resultData.common;
       document.querySelector("#tardy").innerHTML = resultData.late;
       document.querySelector("#sick-absent").innerHTML = resultData.sick;
@@ -31,7 +32,7 @@ function changeData(array) {
   let sick = 0;
   let absent = 0;
   let already = 0;
-
+  console.log(array);
   let weekData = [[0,0],[0,0],[0,0],[0,0],[0,0]];
   var count = 0;
   for (let a of array) {

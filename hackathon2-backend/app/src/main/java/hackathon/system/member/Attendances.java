@@ -65,7 +65,7 @@ public class Attendances {
     } else {
       date = dates[0].toString();
     }
-    Attendances.put(date, at);
+    this.Attendances.put(date, at);
   }
 
   public Map<String, Attendance> getAttendances() {
@@ -73,10 +73,12 @@ public class Attendances {
   }
 
   public void setAttendances(Map<String, Attendance> attendances) {
-    Attendances = attendances;
+    this.Attendances = attendances;
   }
 
-
-
-
+  public Map<String, Attendance> getOneDayAttendances(String date) {
+    Map<String, Attendance> tmp = new HashMap<>();
+    tmp.put(date,this.Attendances.get(date));
+    return tmp;
+  }
 }
