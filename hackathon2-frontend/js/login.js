@@ -19,7 +19,10 @@ document.querySelector("#login-btn").onclick = function(e) {
       if (obj.status == "success") {
       location.href = "indevidual.html";
       } else {
-        alert(obj.message);
+        Swal.fire({
+          icon: 'error',
+          title: obj.message,
+        });
       }
     }
   })
