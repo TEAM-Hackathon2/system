@@ -95,12 +95,12 @@ function drawCircleChart(attendance, absent, late, already, sick) {
   
   myPieData = {
   type: 'pie',
-  labels: ['출석', '결석', '지각', '조퇴', '병가'],
+  labels: ['출석', '결석', '지각',  '병가'],
   datasets : [
     {
-      label: ['출석', '결석', '지각', '조퇴', '병가'],
-      data : [attendance, absent, late, already, sick],
-      backgroundColor: ['rgba(256, 60, 40, 0.1)', 'rgba(256, 255, 10, 0.3)', 'rgba(70, 100, 100, 0.1)', 'rgba(256, 0, 100, 0.5)', 'rgba(256, 156, 100, 0.4)'],
+      label: ['출석', '결석', '지각', '병가'],
+      data : [attendance, absent, late, sick],
+      backgroundColor: ['#0d6efd', '#dc3546', '#fec107', '#188754'],
     }],
   }
 
@@ -151,7 +151,7 @@ function drawMixChart(weekendData) {
 $().ready(function () {
   $("#attendance-alert").click(function () {
       Swal.fire({
-          title: '이런 용서받지 못할!',
+          title: '그렇지!!!!',
           imageUrl: 'img/1.jpg',
           imageWidth: 400,
           imageHeight: 400,
@@ -171,7 +171,7 @@ $().ready(function () {
 $().ready(function () {
   $("#late-alert").click(function () {
       Swal.fire({
-          title: '이런 용서받지 못할!',
+          title: '이런 용서 받지 못할!!',
           imageUrl: 'img/2.jpg',
           imageWidth: 400,
           imageHeight: 400,
@@ -191,7 +191,7 @@ $().ready(function () {
 $().ready(function () {
   $("#sick-alert").click(function () {
       Swal.fire({
-          title: '이런 용서받지 못할!',
+          title: '아파도 와서 아파야 해요!',
           imageUrl: 'img/3.jpg',
           imageWidth: 400,
           imageHeight: 400,
@@ -211,7 +211,7 @@ $().ready(function () {
 $().ready(function () {
   $("#absent-alert").click(function () {
       Swal.fire({
-          title: '이런 용서받지 못할!',
+          title: '왜 안왔어? 어디 아픈가?!',
           imageUrl: 'img/4.jpg',
           imageWidth: 400,
           imageHeight: 400,
