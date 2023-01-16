@@ -6,8 +6,6 @@ document.querySelector("#register-btn").onclick = function(e) {
     if (id === "" || id.length === 0) {
       return;
     }
-
-
     var password = document.querySelector("#password").value;
     recordedId = id;
     fetch('http://localhost:8080/registAccount', {
@@ -22,10 +20,16 @@ document.querySelector("#register-btn").onclick = function(e) {
     .then((response) => response.json())
     .then((obj) => {
     if (obj.status == "failure") {        
-    	alert(obj.message);
+      Swal.fire({
+        icon: 'error',
+        title: '중복된 아이디가 있습니다!',
+      });
       return;
     } 
-		alert(obj.message);
+    Swal.fire({
+      icon: 'success',
+      title: '가입 성공!',
+    });
     popUpAlert();
   })
     .catch((err) => {

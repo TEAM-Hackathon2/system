@@ -56,7 +56,7 @@ public class AccountDao {
     }
   }
 
-  public String deleteAccount(String id, String password) {
+  public boolean deleteAccount(String id, String password) {
     Account account = this.findById(id);
     int index = 0;
     if(account.getPassword().equals(password)) {
@@ -70,10 +70,9 @@ public class AccountDao {
         this.accounts[i - 1] = accounts[i];
       }
       this.accounts[this.count--] = null;
-      return "삭제 성공";
+      return true;
     } else {
-      System.out.println("실패");
-      return "삭제 실패";
+      return false;
     }
   }
 

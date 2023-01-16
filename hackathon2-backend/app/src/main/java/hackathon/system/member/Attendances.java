@@ -40,7 +40,8 @@ public class Attendances {
     } else {
       date = dates[0].toString();
     }
-    if (this.attendances.get(date).getOutTime() != 0) {
+    if (attendances.containsKey(date)
+        && attendances.get(date).getOutTime() != 0) {
       return false;
     }
 

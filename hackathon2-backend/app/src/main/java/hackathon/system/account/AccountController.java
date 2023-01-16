@@ -84,8 +84,12 @@ public class AccountController {
   public Object deleteAccount(@RequestBody Account ac) {
     Map<String, Object> contentMap = new HashMap<>();
 
-    this.accountDao.deleteAccount(ac.getId(), ac.getPassword());
-    contentMap.put("status", "success");
+    if (this.accountDao.deleteAccount(ac.getId(), ac.getPassword())) {
+      contentMap.put("status", "success");
+    } else {
+      contentMap.put("status", "failure");
+    }
+
     //contentMap.put("message", );
     return contentMap;
   }

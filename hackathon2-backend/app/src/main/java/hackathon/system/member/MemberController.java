@@ -36,11 +36,9 @@ public class MemberController {
     Map<String, Object> contentMap = new HashMap<>();
     if(memberDao.findById(id).getAttendance().checkIn(time)) {
       contentMap.put("status", "success");
-
     } else {
       contentMap.put("status", "failure");
     }
-    contentMap.put("status", "success");
     return contentMap;
   }
 
@@ -50,11 +48,9 @@ public class MemberController {
     Map<String, Object> contentMap = new HashMap<>();
     if(memberDao.findById(id).getAttendance().checkOut(time)) {
       contentMap.put("status", "success");
-
     } else {
       contentMap.put("status", "failure");
     }
-    contentMap.put("status", "success");
     return contentMap;
   }
 

@@ -14,7 +14,7 @@ document.querySelector("#login-btn").onclick = function(e) {
     .then((response) => response.json())
     .then((obj) => {
     if (obj.status == "admin") {      
-      location.href = "admin.html";
+      location.href = "index.html";
     } else {
       if (obj.status == "success") {
       location.href = "indevidual.html";
