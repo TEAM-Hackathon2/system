@@ -117,7 +117,7 @@ function drawMixChart(weekendData) {
   const mydata = [weekendData[0][1],weekendData[1][1],weekendData[2][1],
   weekendData[3][1],weekendData[4][1]];
   const mydataHalf = [weekendData[0][0],weekendData[1][0],weekendData[2][0],
-  weekendData[3][0],weekendData[4][0]];;
+  weekendData[3][0],weekendData[4][0]];
 
   mixedChart = {
   type: 'bar',
