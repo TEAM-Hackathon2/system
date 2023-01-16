@@ -4,6 +4,8 @@ fetch('http://localhost:8080/admin')
   .then((obj) => {
     if (obj.status === "success") {
       let resultData = changeData(obj.onedaydata);
+      let plz = changeData(obj.alldata);
+
       //console.log(obj.plz);
       document.querySelector("#attendance").innerHTML = resultData.common;
       document.querySelector("#tardy").innerHTML = resultData.late;
@@ -13,7 +15,7 @@ fetch('http://localhost:8080/admin')
       drawCircleChart(resultData.common, resultData.absent, resultData.late,
         resultData.already, resultData.sick);
       
-      drawMixChart(resultData.weekend);
+      drawMixChart(plz.weekend);
 
   } else {
     location.href = "404.html";
@@ -34,6 +36,7 @@ function changeData(array) {
   let weekData = [[0,0],[0,0],[0,0],[0,0],[0,0]];
   var count = 0;
   for (let a of array) {
+    console.log(a.name);
     for (let b in a.attendance.attendances) {      
       let c = a.attendance.attendances[b];
         if (c == null) {

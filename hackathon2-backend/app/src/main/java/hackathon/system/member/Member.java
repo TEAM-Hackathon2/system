@@ -23,13 +23,6 @@ public class Member {        //계정이랑 통합해야할수도
     this.createDate = createDate;
   }
 
-  public Member(String createDate, int no, String name, String id) {
-    //attendance = new Attendances(createDate);
-    this.no = no;
-    this.name = name;
-    this.id = id;
-  }
-
   public Member(int no, String name, String id, String age, String gender, String address, String tel) {
     this.no = no;
     this.name = name;

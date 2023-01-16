@@ -27,7 +27,7 @@ public class DataController {
 
 
     contentMap.put("status", "success");
-    contentMap.put("plz", memberDao.findAll());
+    contentMap.put("alldata", memberDao.findAll());
     contentMap.put("onedaydata", memberDao.getOneDayData());
     return contentMap;
   }

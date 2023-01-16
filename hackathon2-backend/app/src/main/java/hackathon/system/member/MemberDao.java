@@ -25,10 +25,15 @@ public class MemberDao {
   public Member[] getOneDayData() {
     Member[] datas = new Member[this.count];
     for (int i = 0; i < this.count; i++) {
-      datas[i] = this.members[i];
-      datas[i].getAttendance().setAttendances(
-          this.members[i].getAttendance().getOneDayAttendances(
-              new Date(System.currentTimeMillis() - 1000l * 3600 * 24).toString()));
+      Member m = this.members[i];
+      Attendances a = new Attendances();
+      a.setAttendances(this.members[i].getAttendance().getOneDayAttendances(
+          new Date(System.currentTimeMillis() - 1000l * 3600 * 24).toString()));
+
+
+      datas[i] = new Member(m.getNo(), m.getName(), m.getId(), m.getAge(),
+          m.getGender(), m.getAddress(), m.getTel(), a);
+      datas[i].setCreateDate(m.getCreateDate());
     }
     return datas;
   }

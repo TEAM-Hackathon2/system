@@ -47,7 +47,7 @@ public class TmpDB {
     Long defaultTime = System.currentTimeMillis() - 1000l * 3600 * 24 * 14;
     for (int i = 0; i < 25; i++) {
       Attendances attendaces = new Attendances();
-      for (int j = 0; j < 14; j++) {
+      for (int j = 0; j < 15; j++) {
 
         Date tmp = new Date(defaultTime + (1000l * 3600 * 24 * j));
         switch ((int)(Math.random()*10)) {
