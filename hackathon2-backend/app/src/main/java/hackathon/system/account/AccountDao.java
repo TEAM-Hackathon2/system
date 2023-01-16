@@ -58,9 +58,21 @@ public class AccountDao {
 
   public String deleteAccount(String id, String password) {
     Account account = this.findById(id);
+    int index = 0;
     if(account.getPassword().equals(password)) {
+      for (int i = 0; i < this.count; i++) {
+        if(this.accounts[i].getId().equals(id)) {
+          index = i;
+        }
+      }
+
+      for (int i = index + 1; i < count; i++ ) {
+        this.accounts[i - 1] = accounts[i];
+      }
+      this.accounts[this.count--] = null;
       return "삭제 성공";
     } else {
+      System.out.println("실패");
       return "삭제 실패";
     }
   }

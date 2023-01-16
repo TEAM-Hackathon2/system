@@ -1,9 +1,10 @@
+let resultData;
 
 fetch('http://localhost:8080/admin')
   .then((response) => response.json())
   .then((obj) => {
     if (obj.status === "success") {
-      let resultData = changeData(obj.onedaydata);
+      resultData = changeData(obj.onedaydata);
       let plz = changeData(obj.alldata);
 
       //console.log(obj.plz);
@@ -25,8 +26,6 @@ fetch('http://localhost:8080/admin')
   .catch((err) => {
     console.log(err);});
 
-
-
 function changeData(array) {
   let common = 0;
   let late = 0;
@@ -34,27 +33,38 @@ function changeData(array) {
   let absent = 0;
   let already = 0;
   let weekData = [[0,0],[0,0],[0,0],[0,0],[0,0]];
+
+  let attendenceList = [];
+  let lateList = [];
+  let sickList = [];
+  let absentList = [];
+
   var count = 0;
   for (let a of array) {
-    console.log(a.name);
     for (let b in a.attendance.attendances) {      
       let c = a.attendance.attendances[b];
         if (c == null) {
           absent++;
+          absentList.push(a.name);
         } else if (c.absent) {
           if (c.absentType === 0) {
             absent++;
+            absentList.push(a.name);
           } else if ((c.absentType === 1)) {
             sick++;
+            sickList.push(a.name);
           }
           weekData[count][1]++;
         } else {
           if (c.inTime >= 9.5) {
             late++;
+            lateList.push(a.name);
           } else if (c.outTime <= 18) {
             already++;
+            lateList.push(a.name);
           } else {
             common++;
+            attendenceList.push(a.name);
           }     
           weekData[count][0]++;
         }
@@ -70,7 +80,11 @@ function changeData(array) {
     "already" : already,
     "sick" : sick,
     "absent" : absent,
-    "weekend" : weekData
+    "weekend" : weekData,
+    "attendenceList" : attendenceList,
+    "lateList" : lateList,
+    "sickList" : sickList,
+    "absentList" : absentList,
   }
 }
 
@@ -112,13 +126,13 @@ function drawMixChart(weekendData) {
     {
       label: '결석률',
       data : mydata,
-      backgroundColor: 'rgba(256, 0, 0, 0.1)'
+      backgroundColor: '#dc3546'
     },
     {
       label: '출석률',
       data: mydataHalf,
       backgroundColor: 'transparent',
-      borderColor: 'skyblue',
+      borderColor: '#0d6efd',
       type: 'line'
     }
   ]
@@ -133,3 +147,83 @@ function drawMixChart(weekendData) {
     }
   });  
 }
+
+$().ready(function () {
+  $("#attendance-alert").click(function () {
+      Swal.fire({
+          title: '이런 용서받지 못할!',
+          imageUrl: 'img/2.png',
+          imageWidth: 400,
+          imageHeight: 400,
+          imageAlt: 'Custom image',
+          width: 600,
+          padding: '3em',
+          backdrop: `
+          rgba(0,0,123,0.4)
+          url("")
+          left top
+          no-repeat`,
+          text: resultData.attendenceList,
+      });
+  });
+});     
+
+$().ready(function () {
+  $("#late-alert").click(function () {
+      Swal.fire({
+          title: '이런 용서받지 못할!',
+          imageUrl: 'img/2.png',
+          imageWidth: 400,
+          imageHeight: 400,
+          imageAlt: 'Custom image',
+          width: 600,
+          padding: '3em',
+          backdrop: `
+          rgba(0,0,123,0.4)
+          url("")
+          left top
+          no-repeat`,
+          text: resultData.lateList,
+      });
+  });
+});   
+
+$().ready(function () {
+  $("#sick-alert").click(function () {
+      Swal.fire({
+          title: '이런 용서받지 못할!',
+          imageUrl: 'img/2.png',
+          imageWidth: 400,
+          imageHeight: 400,
+          imageAlt: 'Custom image',
+          width: 600,
+          padding: '3em',
+          backdrop: `
+          rgba(0,0,123,0.4)
+          url("")
+          left top
+          no-repeat`,
+          text: resultData.sickList,
+      });
+  });
+});     
+
+$().ready(function () {
+  $("#absent-alert").click(function () {
+      Swal.fire({
+          title: '이런 용서받지 못할!',
+          imageUrl: 'img/2.png',
+          imageWidth: 400,
+          imageHeight: 400,
+          imageAlt: 'Custom image',
+          width: 600,
+          padding: '3em',
+          backdrop: `
+          rgba(0,0,123,0.4)
+          url("")
+          left top
+          no-repeat`,
+          text: resultData.absentList,
+      });
+  });
+});     

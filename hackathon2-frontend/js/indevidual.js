@@ -18,17 +18,32 @@ fetch('http://localhost:8080/indiv')
             let innerData = obj.data.attendance[a][b];
             if (!innerData.absent) {
               common++
-              if (innerData.inTime >= 9.5) {
-                late++;
+              if (innerData.inTime != 0) {
+                let tmpin = (""+ innerData.inTime).split(".");
+
+                document.querySelector(".ipsildata").innerHTML = tmpin[0] + ":" + tmpin[1];
+                if (innerData.inTime >= 9.5) {
+                  late++;
+                }
               }
-              if (innerData.outTime <= 18) {
-                already++;
-              }
+              if (innerData.outTime !== 0) {
+                let tmpout = (""+ innerData.outTime).split(".");
+
+                document.querySelector(".teisildata").innerHTML = tmpout[0] + ":" + tmpout[1];
+                if(innerData.outTime <= 18) {
+                  already++;
+                }
+              } 
             } else {
               absent++;
             }            
           }
         }
+
+        
+        document.querySelector(".bokguidata").innerHTML
+        document.querySelector(".oichuldata").innerHTML
+        document.querySelector(".teisildata").innerHTML
 
         document.querySelector("#chulsuk").innerHTML = common;
         document.querySelector("#jigak").innerHTML = late;
@@ -60,13 +75,14 @@ document.querySelector("#inTime").onclick = (e) => {
   let hours = today.getHours(); // 시
   let minutes = today.getMinutes();  // 분
   let time = hours + "." + minutes;
+  console.log(time);
 
   document.querySelector(".ipsildata").innerHTML = hours + " : " + minutes;
 
   fetch('http://localhost:8080/instage', {
     method: 'PUT',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencode'
+      'Content-type': 'application/x-www-form-urlencoded'
     },
     body: `id=${recordedId}&time=${time}`
   })
@@ -81,24 +97,23 @@ document.querySelector("#inTime").onclick = (e) => {
     console.log(err);});
 }
 
-
-
 document.querySelector("#outTime").onclick = (e) => {
   let today = new Date();   
 
   let hours = today.getHours(); // 시
   let minutes = today.getMinutes();  // 분
   let time = hours + "." + minutes;
+  console.log(time);
 
   document.querySelector(".teisildata").innerHTML = hours + " : " + minutes;
 
   fetch('http://localhost:8080/outstage', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencode'
-      },
-      body: `id=${recordedId}&time=${time}`
-    })
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/x-www-form-urlencoded'
+    },
+    body: `id=${recordedId}&time=${time}`
+  })
     .then((response) => response.json())
     .then((obj) => {
     if (obj.status == "failure") {        
@@ -108,3 +123,54 @@ document.querySelector("#outTime").onclick = (e) => {
     .catch((err) => {
       console.log(err);});
 }
+
+
+document.querySelector('#del').onclick = (e) => {
+
+  fetch('http://localhost:8080/delmember', {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/x-www-form-urlencoded'
+    },
+    body: `id=${recordedId}`
+  })
+    .then((response) => response.json())
+    .then((obj) => {
+    if (obj.status == "failure") {        
+      return;
+    } 
+  })
+    .catch((err) => {
+      console.log(err);});
+
+  fetch('http://localhost:8080/deleteAccount', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'Application/json'
+    },
+    body: JSON.stringify({
+      "id":recordedId,
+      "password":"1"})
+  })
+    .then((response) => response.json())
+    .then((obj) => {
+      if (obj.status == "failure") {
+        return;
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });    
+
+
+
+  Swal.fire({
+    icon: 'success',
+    title: '삭제되었습니다!',
+  }).then(() => {
+    location.href = "./login.html";
+  });
+
+
+
+};

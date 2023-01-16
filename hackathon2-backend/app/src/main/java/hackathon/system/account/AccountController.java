@@ -30,7 +30,7 @@ public class AccountController {
     if (a.getId().equalsIgnoreCase("admin") &&
         this.accountDao.checkAdmin(a.getPassword())) {
       contentMap.put("status", "admin");
-      contentMap.put("data", "전체 사용자 데이터 반환");
+      contentMap.put("data", "전체 사용자 데이터 반환"); //애는 비번틀렸다팝업안뜸
       return contentMap;
     } else {
       Account requestAccount = this.accountDao.findById(a.getId());
@@ -84,8 +84,9 @@ public class AccountController {
   public Object deleteAccount(@RequestBody Account ac) {
     Map<String, Object> contentMap = new HashMap<>();
 
-    contentMap.put("status", "checkMessage");
-    contentMap.put("message", this.accountDao.deleteAccount(ac.getId(), ac.getPassword()));
+    this.accountDao.deleteAccount(ac.getId(), ac.getPassword());
+    contentMap.put("status", "success");
+    //contentMap.put("message", );
     return contentMap;
   }
 

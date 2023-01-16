@@ -28,7 +28,7 @@ public class MemberDao {
       Member m = this.members[i];
       Attendances a = new Attendances();
       a.setAttendances(this.members[i].getAttendance().getOneDayAttendances(
-          new Date(System.currentTimeMillis() - 1000l * 3600 * 24).toString()));
+          new Date(System.currentTimeMillis()).toString())); //  - 1000l * 3600 * 24
 
 
       datas[i] = new Member(m.getNo(), m.getName(), m.getId(), m.getAge(),
