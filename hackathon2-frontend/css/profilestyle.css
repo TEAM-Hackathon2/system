@@ -1,0 +1,170 @@
+html, h1, h2, h3, p, ul, li
+ {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	font-family: 'Lato','Noto Sans KR',sans-serif;
+	border: 0;
+    outline: none;
+}
+
+/* main */
+.wrap .inner .main {
+    position: relative;
+    width: 100%;
+    /* padding-left: 300px; */
+    box-sizing: border-box;
+}
+/* container */
+.container {
+    padding: 60px 250px 15px;
+}
+.container .contents .section  {
+    margin-bottom: 30px;
+}
+.container .contents .section .section_info .section_link ul li {
+    width: 120px;
+    margin-right: 20px;
+    position: relative;
+}
+
+.container .contents .section .section_info .section_link ul li button#my_project {
+    background-color: rgba(97, 208, 212, 1);
+    border: 0px solid rgba(97, 208, 212, 1) ;
+}
+
+.container .contents .section .section_info.section_work_info .section_text .txt_tit {
+    margin-bottom: 3px;
+    font-size: 23px;
+    color: #4dabf7;
+}
+.container .contents .section .section_info .section_text .txt_sub {
+    padding: 5px 0;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.container .contents .section .section_info .section_text .txt_sub p {
+    padding: 3px 0;
+}
+
+.container .contents .section .section_info .section_text .txt_sub.work_name {
+    font-size: 30px;
+}
+.container .contents .section .section_info .section_text .txt_desc.self_intro {
+    font-size: 25px;
+}
+.container .contents .section .section_info .section_text .txt_desc.work_desc {
+    position: relative;
+    padding: 10px 0 10px 20px;
+}
+
+.container .contents .section .section_info .section_text .txt_desc a:hover {
+    color: #4dabf7;
+}
+
+.container .contents .section .section_info .section_text .txt_desc.work_desc .date {
+    font-size: 17px;
+    color: #4dabf7;
+}
+.container .contents .section .section_info .section_text .txt_desc.work_desc .work_info {
+    padding: 3px 0;
+    font-size: 19px;
+}
+
+.container .contents .section .section_info .section_text .sub_desc:before {
+    position: absolute;
+    left: 0;
+    display: block;
+    content: "•";
+    color: #4dabf7;
+}
+.container .contents .section .section_info .section_float:last-child {
+    border-right: none;
+    margin-right: 0;
+}
+.container .contents .section .section_info .section_work .works_ul {
+    margin-left: 5px;
+}
+.container .contents .section .section_info .section_work li {
+    padding: 12px 0;
+}
+.container .contents .section .section_info .section_work li .work_contents {
+    display: flex;
+}
+.container .contents .section .section_info .section_work li i {
+    font-size: 30px;
+}
+
+/* common */
+.wrap {
+    position: relative;
+    height: 100%;
+    color: #4D4D4D;
+}
+.wrap .ul_flex {
+    display: flex;
+}
+.wrap .inner {
+    display: flex;
+    height: 100%;
+    padding-top: 15px;
+}
+.wrap .inner a {
+    color: #4D4D4D;
+}
+.container .contents .section .section_title {
+    text-align: center;
+    border-bottom: 1px solid #4dabf7;
+    
+}
+.container .contents .section .section_title h2 {
+    padding: 5px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #4dabf7;
+}
+.container .contents .section .section_info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+}
+.container .contents .section .section_info .section_text {
+    margin-left: 15px;
+    line-height: 1.4;
+}
+.container .contents .section .section_info .section_text .txt_tit {
+    font-size: 45px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.container .contents .section .section_info .section_text .txt_desc {
+    font-size: 19px;
+}
+
+.container .contents .section .section_info .section_text .txt_desc p {
+    padding: 3px 0;
+}
+
+.container .contents .section .section_info .section_text .txt_desc .sub_desc {
+    padding-bottom: 3px;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+/* container */
+
+/* main */
+
+
+  
+  

@@ -1,0 +1,9 @@
+$("#admin-btn").click(function(){
+  $("main").load("admin.html")
+});
+$("#profile-btn").click(function(){
+  $("main").load("profile.html")
+});
+$("#list-btn").click(function(){
+  $("main").load("list.html")
+});

@@ -21,7 +21,7 @@ fetch('http://localhost:8080/indiv')
               if (innerData.inTime != 0) {
                 let tmpin = (""+ innerData.inTime).split(".");
 
-                document.querySelector(".ipsildata").innerHTML = tmpin[0] + ":" + tmpin[1];
+                document.querySelector(".ipsildata").innerHTML = tmpin[0] + " : " + tmpin[1];
                 if (innerData.inTime >= 9.5) {
                   late++;
                 }
@@ -29,7 +29,7 @@ fetch('http://localhost:8080/indiv')
               if (innerData.outTime !== 0) {
                 let tmpout = (""+ innerData.outTime).split(".");
 
-                document.querySelector(".teisildata").innerHTML = tmpout[0] + ":" + tmpout[1];
+                document.querySelector(".teisildata").innerHTML = tmpout[0] + " : " + tmpout[1];
                 if(innerData.outTime <= 18) {
                   already++;
                 }
@@ -102,7 +102,7 @@ document.querySelector("#outTime").onclick = (e) => {
 
   let hours = today.getHours(); // 시
   let minutes = today.getMinutes();  // 분
-  let time = hours + "." + minutes;
+  let time = hours + " . " + minutes;
   console.log(time);
 
   document.querySelector(".teisildata").innerHTML = hours + " : " + minutes;
@@ -171,6 +171,7 @@ document.querySelector('#del').onclick = (e) => {
     location.href = "./login.html";
   });
 
-
-
 };
+$("#profile-btn").click(function(){
+  $("main").load("profile.html")
+});

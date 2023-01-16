@@ -172,7 +172,7 @@ $().ready(function () {
   $("#late-alert").click(function () {
       Swal.fire({
           title: '이런 용서받지 못할!',
-          imageUrl: 'img/2.png',
+          imageUrl: 'img/2.jpg',
           imageWidth: 400,
           imageHeight: 400,
           imageAlt: 'Custom image',
@@ -192,7 +192,7 @@ $().ready(function () {
   $("#sick-alert").click(function () {
       Swal.fire({
           title: '이런 용서받지 못할!',
-          imageUrl: 'img/2.png',
+          imageUrl: 'img/2.jpg',
           imageWidth: 400,
           imageHeight: 400,
           imageAlt: 'Custom image',
