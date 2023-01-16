@@ -3957,6 +3957,7 @@ textarea.form-control-lg {
 }
 
 .nav-link {
+  cursor: pointer;
   display: block;
   padding: 0.5rem 1rem;
   color: #0d6efd;
@@ -11757,10 +11758,10 @@ font-weight:bold;
   font-weight:bold;
   }
   .barchart-div{
-    width:700px;
+    width:585px;
     height:500px;
     padding-top:70px;
-    margin:auto;
+    margin:0 auto;
   }
   
   .circle-div{
@@ -11788,6 +11789,7 @@ font-weight:bold;
   text-align: center;
   height:40px;   
   top:10px; 
+  font-weight: bold;
 }
 .naesangtaes{
     border: 1px solid rgb(218, 214, 214);
@@ -11873,12 +11875,14 @@ font-weight:bold;
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    padding : 30px;
+    padding : 22px;
     position:relative;
     right:15px;
     margin:15px;
     top:20px;
-    background-color:#58668B;
+    background-color:#2F2F30;
+    color:white;
+    font-size:25px;
 }
 .hyunhwangwords{
     text-align: center;
@@ -11888,6 +11892,7 @@ font-weight:bold;
     position:relative;
     width: 70px;
     margin:20.5px;
+
 }
 .conglyuls{
     /* border: 1px solid black; */
@@ -11978,7 +11983,7 @@ font-weight:bold;
   text-decoration-line: underline;
   cursor:pointer;
 }
-#absent-alert{
+#sick-alert{
   width:70px;
   border:0px solid;
   text-decoration-line: underline;
@@ -11996,3 +12001,7 @@ font-weight:bold;
   background-color: #212529;
   color: rgba(255, 255, 255, 0.5);
 }
+#del{
+  cursor: pointer;
+}
+
