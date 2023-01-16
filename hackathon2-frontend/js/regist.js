@@ -60,7 +60,10 @@ document.querySelector("#register-btn").onclick = function(e) {
   })
   if (formValues) {
     // Swal.fire(JSON.stringify(formValues))
-    Swal.fire("입력되었습니다.");
+    Swal.fire("입력되었습니다.")
+    .then(()=>{
+      location.href="login.html"
+    });
     console.log(formValues);
     fetch('http://localhost:8080/addMember', {
       method: 'POST',

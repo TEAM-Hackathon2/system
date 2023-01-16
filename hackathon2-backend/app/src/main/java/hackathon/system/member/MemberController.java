@@ -19,7 +19,7 @@ public class MemberController {
     this.memberDao = memberDao;
   }
 
-  @PostMapping("/addMember") //추가 삭제 이런거해야함
+  @PostMapping("/addMember")
   public Object addMemer(@RequestBody Member m) {
 
     Map<String, Object> contentMap = new HashMap<>();
