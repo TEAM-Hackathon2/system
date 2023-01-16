@@ -23,6 +23,7 @@ document.querySelector("#login-btn").onclick = function(e) {
           icon: 'error',
           title: obj.message,
         });
+        return;
       }
     }
   })
