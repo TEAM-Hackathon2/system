@@ -7,7 +7,6 @@ fetch('http://localhost:8080/admin')
       resultData = changeData(obj.onedaydata);
       let plz = changeData(obj.alldata);
 
-      //console.log(obj.plz);
       document.querySelector("#attendance").innerHTML = resultData.common;
       document.querySelector("#tardy").innerHTML = resultData.late;
       document.querySelector("#sick-absent").innerHTML = resultData.sick;
@@ -89,141 +88,142 @@ function changeData(array) {
 }
 
 
-function drawCircleChart(attendance, absent, late, already, sick) {
-    // 파이형 차트
-    ctx2 = document.getElementById("myChart2");
-  
-  myPieData = {
-  type: 'pie',
-  labels: ['출석', '결석', '지각', '조퇴', '병가'],
-  datasets : [
-    {
-      label: ['출석', '결석', '지각', '조퇴', '병가'],
-      data : [attendance, absent, late, already, sick],
-      backgroundColor: ['rgba(256, 60, 40, 0.1)', 'rgba(256, 255, 10, 0.3)', 'rgba(70, 100, 100, 0.1)', 'rgba(256, 0, 100, 0.5)', 'rgba(256, 156, 100, 0.4)'],
-    }],
-  }
 
-      // 가운데 구멍이 없는 파이형 차트
-  myPieChart = new Chart(ctx2, {
-    type: 'pie',
-    data: myPieData,
-    options: {}
-  });
+function drawCircleChart(attendance, absent, late, already, sick) {
+  // 파이형 차트
+  ctx2 = document.getElementById("myChart2");
+
+myPieData = {
+type: 'pie',
+labels: ['출석', '결석', '지각',  '병가'],
+datasets : [
+  {
+    label: ['출석', '결석', '지각', '병가'],
+    data : [attendance, absent, late, sick],
+    backgroundColor: ['#0d6efd', '#dc3546', '#fec107', '#188754'],
+  }],
+}
+
+    // 가운데 구멍이 없는 파이형 차트
+myPieChart = new Chart(ctx2, {
+  type: 'pie',
+  data: myPieData,
+  options: {}
+});
 }
 
 function drawMixChart(weekendData) {
-  const ctx1 = document.getElementById('myChart1');
-  const mydata = [weekendData[0][1],weekendData[1][1],weekendData[2][1],
-  weekendData[3][1],weekendData[4][1]];
-  const mydataHalf = [weekendData[0][0],weekendData[1][0],weekendData[2][0],
-  weekendData[3][0],weekendData[4][0]];;
+const ctx1 = document.getElementById('myChart1');
+const mydata = [weekendData[0][1],weekendData[1][1],weekendData[2][1],
+weekendData[3][1],weekendData[4][1]];
+const mydataHalf = [weekendData[0][0],weekendData[1][0],weekendData[2][0],
+weekendData[3][0],weekendData[4][0]];;
 
-  mixedChart = {
+mixedChart = {
+type: 'bar',
+labels: ['월요일', '화요일', '수요일', '목요일', '금요일'],
+datasets : [
+  {
+    label: '결석률',
+    data : mydata,
+    backgroundColor: '#dc3546'
+  },
+  {
+    label: '출석률',
+    data: mydataHalf,
+    backgroundColor: 'transparent',
+    borderColor: '#0d6efd',
+    type: 'line'
+  }
+]
+};
+myChart = new Chart(ctx1, {
   type: 'bar',
-  labels: ['월요일', '화요일', '수요일', '목요일', '금요일'],
-  datasets : [
-    {
-      label: '결석률',
-      data : mydata,
-      backgroundColor: '#dc3546'
-    },
-    {
-      label: '출석률',
-      data: mydataHalf,
-      backgroundColor: 'transparent',
-      borderColor: '#0d6efd',
-      type: 'line'
+  data: mixedChart,
+  options: {
+    legend: {
+      display: true
     }
-  ]
-  };
-  myChart = new Chart(ctx1, {
-    type: 'bar',
-    data: mixedChart,
-    options: {
-      legend: {
-        display: true
-      }
-    }
-  });  
+  }
+});  
 }
 
 $().ready(function () {
-  $("#attendance-alert").click(function () {
-      Swal.fire({
-          title: '이런 용서받지 못할!',
-          imageUrl: 'img/1.jpg',
-          imageWidth: 400,
-          imageHeight: 400,
-          imageAlt: 'Custom image',
-          width: 600,
-          padding: '3em',
-          backdrop: `
-          rgba(0,0,123,0.4)
-          url("")
-          left top
-          no-repeat`,
-          text: resultData.attendenceList,
-      });
-  });
+$("#attendance-alert").click(function () {
+    Swal.fire({
+        title: '그렇지!!!!',
+        imageUrl: 'img/1.jpg',
+        imageWidth: 400,
+        imageHeight: 400,
+        imageAlt: 'Custom image',
+        width: 600,
+        padding: '3em',
+        backdrop: `
+        rgba(0,0,123,0.4)
+        url("")
+        left top
+        no-repeat`,
+        text: resultData.attendenceList,
+    });
+});
 });     
 
 $().ready(function () {
-  $("#late-alert").click(function () {
-      Swal.fire({
-          title: '이런 용서받지 못할!',
-          imageUrl: 'img/2.jpg',
-          imageWidth: 400,
-          imageHeight: 400,
-          imageAlt: 'Custom image',
-          width: 600,
-          padding: '3em',
-          backdrop: `
-          rgba(0,0,123,0.4)
-          url("")
-          left top
-          no-repeat`,
-          text: resultData.lateList,
-      });
-  });
+$("#late-alert").click(function () {
+    Swal.fire({
+        title: '이런 용서 받지 못할!!',
+        imageUrl: 'img/2.jpg',
+        imageWidth: 400,
+        imageHeight: 400,
+        imageAlt: 'Custom image',
+        width: 600,
+        padding: '3em',
+        backdrop: `
+        rgba(0,0,123,0.4)
+        url("")
+        left top
+        no-repeat`,
+        text: resultData.lateList,
+    });
+});
 });   
 
 $().ready(function () {
-  $("#sick-alert").click(function () {
-      Swal.fire({
-          title: '이런 용서받지 못할!',
-          imageUrl: 'img/3.jpg',
-          imageWidth: 400,
-          imageHeight: 400,
-          imageAlt: 'Custom image',
-          width: 600,
-          padding: '3em',
-          backdrop: `
-          rgba(0,0,123,0.4)
-          url("")
-          left top
-          no-repeat`,
-          text: resultData.sickList,
-      });
-  });
+$("#sick-alert").click(function () {
+    Swal.fire({
+        title: '아파도 와서 아파야 해요!',
+        imageUrl: 'img/3.jpg',
+        imageWidth: 400,
+        imageHeight: 400,
+        imageAlt: 'Custom image',
+        width: 600,
+        padding: '3em',
+        backdrop: `
+        rgba(0,0,123,0.4)
+        url("")
+        left top
+        no-repeat`,
+        text: resultData.sickList,
+    });
+});
 });     
 
 $().ready(function () {
-  $("#absent-alert").click(function () {
-      Swal.fire({
-          title: '이런 용서받지 못할!',
-          imageUrl: 'img/4.jpg',
-          imageWidth: 400,
-          imageHeight: 400,
-          imageAlt: 'Custom image',
-          width: 600,
-          padding: '3em',
-          backdrop: `
-          rgba(0,0,123,0.4)
-          url("")
-          left top
-          no-repeat`,
-          text: resultData.absentList,
-      });
-  });
+$("#absent-alert").click(function () {
+    Swal.fire({
+        title: '왜 안왔어? 어디 아픈가?!',
+        imageUrl: 'img/4.jpg',
+        imageWidth: 400,
+        imageHeight: 400,
+        imageAlt: 'Custom image',
+        width: 600,
+        padding: '3em',
+        backdrop: `
+        rgba(0,0,123,0.4)
+        url("")
+        left top
+        no-repeat`,
+        text: resultData.absentList,
+    });
+});
 });     

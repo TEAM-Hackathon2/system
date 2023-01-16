@@ -58,7 +58,7 @@ public class TmpDB {
             attendaces.checkAbsent("sick",tmp);
             break;
           default:
-            attendaces.checkIn(8.0 + Math.round((Math.random()*3 * 10))/10.0, tmp);
+            attendaces.checkIn(8.0 + Math.round((Math.random()*2 * 10))/10.0, tmp);
             attendaces.checkOut(18.0 + Math.round((Math.random()*2 * 10))/10.0, tmp);
         }
       }
