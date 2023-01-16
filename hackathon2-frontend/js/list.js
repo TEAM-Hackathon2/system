@@ -1,6 +1,9 @@
 const datatablesSimple = document.getElementById('datatablesSimple');
 const tbody = document.querySelector("tbody");
 
+
+window.addEventListener('DOMContentLoaded', event => {
+
 fetch('http://localhost:8080/admin')
   .then((response) => response.json())
   .then((obj) => {
@@ -43,3 +46,5 @@ fetch('http://localhost:8080/admin')
     alert("서버 요청 오류!");
     console.log(err);
   });
+
+});
